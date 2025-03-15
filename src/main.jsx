@@ -7,6 +7,7 @@ const reactRoot = createRoot(root)
 
 reactRoot.render(
   <div className="restaurants">
+    <h1>Restaurants</h1>
     {restaurants.map((restaurant) => {
       return (
         <div key={restaurant.id} className="restaurant">
