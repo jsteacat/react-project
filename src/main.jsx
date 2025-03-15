@@ -14,20 +14,20 @@ reactRoot.render(
           <h2>{restaurant.name}</h2>
           <h3>Menu</h3>
           <ul className="menu">
-            {restaurant.menu.map((item) => {
+            {restaurant.menu.map((menuItem) => {
               return (
-                <li key={item.id}>
-                  {item.name}
+                <li key={menuItem.id}>
+                  {menuItem.name}
                 </li>
               )
             })}
           </ul>
           <h3>Reviews</h3>
           <ul className="reviews">
-            {restaurant.reviews.map((item) => {
+            {restaurant.reviews.map((review) => {
               return (
-                <li key={item.id}>
-                  {item.text}
+                <li key={review.id}>
+                  {review.text}
                 </li>
               )
             })}
