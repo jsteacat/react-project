@@ -1,7 +1,7 @@
-export const Tab = ({ tab, onEvent }) => {
+export const Tab = ({ tab, onClick }) => {
   const { title, active } = tab
 
   return (
-    <button disabled={active} onClick={onEvent}>{title}</button>
+    <button disabled={active} onClick={onClick}>{title}</button>
   )
 }

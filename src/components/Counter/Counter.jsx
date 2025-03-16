@@ -1,8 +1,9 @@
 import { useCount } from './useCount'
 
+const maxCount = 5
+const minCount = 0
+
 export const Counter = () => {
-  const maxCount = 5
-  const minCount = 0
   const { count, increment, decrement } = useCount(maxCount, minCount)
   
   return (
