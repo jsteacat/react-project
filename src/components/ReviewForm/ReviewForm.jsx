@@ -1,45 +1,23 @@
-import { useReducer } from 'react'
 import { Counter } from '../Counter/Counter.jsx'
-
-const MAX_COUNT = 5
-const MIN_COUNT = 1
-const DEFAULT_FORM_VALUE = {
-  name: '',
-  text: '',
-  rating: MIN_COUNT,
-}
-
-const SET_NAME_ACTION = 'SET_NAME_ACTION'
-const SET_TEXT_ACTION = 'SET_TEXT_ACTION'
-const SET_RATING_ACTION = 'SET_RATING_ACTION'
-const CLEAR_ACTION = 'CLEAR_ACTION'
-
-const reducer = (state, { type, payload }) => {
-  switch (type) {
-    case 'SET_NAME_ACTION':
-      return {...state, name: payload.name}
-    
-    case 'SET_TEXT_ACTION':
-      return {...state, text: payload.text}
-    
-    case 'SET_RATING_ACTION':
-      return {...state, rating: payload.rating}
-    
-    case 'CLEAR_ACTION':
-      return DEFAULT_FORM_VALUE
-    
-    default:
-      return state
-  }
-}
+import { useReviewForm } from './useReviewForm.js'
 
 export const ReviewForm = () => {
-  const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE)
+  const {
+    MAX_COUNT,
+    MIN_COUNT,
+    SET_NAME_ACTION,
+    SET_TEXT_ACTION,
+    SET_RATING_ACTION,
+    CLEAR_ACTION,
+    form,
+    dispatch,
+  } = useReviewForm()
+
   const { name, text, rating } = form
-  
+
   return (
     <div className="review-form">
-      <div className="review-field">
+      <div className="review-field" style={{display: 'flex', gap: '5px'}}>
         <label>Name:</label>
         <input
           type="text"
@@ -47,14 +25,16 @@ export const ReviewForm = () => {
           onChange={(e) => dispatch({ type: SET_NAME_ACTION, payload: { name: e.target.value } })}
         />
       </div>
-      <div className="review-field">
+      <br/>
+      <div className="review-field" style={{display: 'flex', gap: '5px'}}>
         <label>Text:</label>
         <input
           value={text}
           onChange={(e) => dispatch({ type: SET_TEXT_ACTION, payload: { text: e.target.value } })}
         />
       </div>
-      <div className="review-field">
+      <br/>
+      <div className="review-field" style={{display: 'flex', gap: '5px'}}>
         <label>Rating:</label>
         <Counter
           count={rating}
@@ -63,6 +43,7 @@ export const ReviewForm = () => {
           onChange={(newRating) => dispatch({ type: SET_RATING_ACTION, payload: { rating: newRating } })}
         />
       </div>
+      <br/>
       <button onClick={() => dispatch({ type: CLEAR_ACTION })}>Clear</button>
     </div>
   )
