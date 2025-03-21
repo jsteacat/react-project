@@ -25,12 +25,11 @@ export const App = ({ title }) => {
       {restaurants.length > 0 ? (
         <div className="content">
           <Tabs tabs={tabs} onClick={selectRestaurantHandler} />
-          {Boolean(getSelectedRestaurant()) && <Restaurant restaurant={getSelectedRestaurant()} />}
+          {Boolean(getSelectedRestaurant()) && <Restaurant key={selectedRestaurantId} restaurant={getSelectedRestaurant()} />}
         </div>
       ) : (
         <div className="empty-data">Данных нет</div>
       )}
     </Layout>
-  
   )
 }
