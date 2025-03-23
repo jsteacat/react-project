@@ -16,16 +16,16 @@ const CLEAR_ACTION = 'CLEAR_ACTION'
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case 'SET_NAME_ACTION':
-      return {...state, name: payload.name}
+      return {...state, name: payload}
     
     case 'SET_TEXT_ACTION':
-      return {...state, text: payload.text}
+      return {...state, text: payload}
     
     case 'SET_RATING_ACTION':
-      return {...state, rating: payload.rating}
+      return {...state, rating: payload}
     
     case 'CLEAR_ACTION':
-      return DEFAULT_FORM_VALUE
+      return {...DEFAULT_FORM_VALUE}
     
     default:
       return state
@@ -33,16 +33,45 @@ const reducer = (state, { type, payload }) => {
 }
 
 export const useReviewForm = () => {
-  const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE)
-
+  const [{ name, text, rating }, dispatch] = useReducer(
+    reducer,
+    DEFAULT_FORM_VALUE
+  );
+  
+  const setNameAction = (name) => {
+    dispatch({ type: SET_NAME_ACTION, payload: name })
+  }
+  
+  const setTextAction = (text) => {
+    dispatch({ type: SET_TEXT_ACTION, payload: text })
+  }
+  
+  const incrementRating = () => {
+    if (rating < MAX_COUNT) {
+      dispatch({ type: SET_RATING_ACTION, payload: rating + 1 })
+    }
+  }
+  
+  const decrementRating = () => {
+    if (rating > MIN_COUNT) {
+      dispatch({ type: SET_RATING_ACTION, payload: rating - 1 })
+    }
+  }
+  
+  const clearAction = () => {
+    dispatch({ type: CLEAR_ACTION })
+  }
+  
   return {
+    name,
+    text,
+    rating,
     MAX_COUNT,
     MIN_COUNT,
-    SET_NAME_ACTION,
-    SET_TEXT_ACTION,
-    SET_RATING_ACTION,
-    CLEAR_ACTION,
-    form,
-    dispatch,
+    setNameAction,
+    setTextAction,
+    incrementRating,
+    decrementRating,
+    clearAction,
   }
 }

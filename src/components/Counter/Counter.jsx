@@ -1,13 +1,9 @@
-import { useCounter } from './useCounter.js'
-
-export const Counter = ({ count, min, max, onChange }) => {
-  const { currentCount, increment, decrement } = useCounter(count, min, max, onChange)
-  
+export const Counter = ({ count, min, max, increment, decrement }) => {
   return (
-    <div className="counter">
-      <button disabled={currentCount === min} onClick={decrement}>-</button>
-      <span>{currentCount}</span>
-      <button disabled={currentCount === max} onClick={increment}>+</button>
+    <div>
+      <button disabled={count === min} onClick={decrement} type="button">-</button>
+      {count}
+      <button disabled={count === max} onClick={increment} type="button">+</button>
     </div>
-  )
-}
+  );
+};

@@ -1,27 +1,22 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
-export const useCounter = (initialCount, minCount, maxCount, onChange) => {
-  const [currentCount, setCount] = useState(initialCount)
-  
-  useEffect(() => {
-    setCount(initialCount)
-  }, [initialCount])
+export const useCounter = (minCount, maxCount) => {
+  const [count, setCount] = useState(0);
   
   const increment = () => {
-    if (currentCount < maxCount) {
-      const newCount = currentCount + 1
-      setCount(newCount)
-      onChange(newCount)
+    if (count < maxCount) {
+      setCount(count + 1);
     }
-  }
-  
+  };
   const decrement = () => {
-    if (currentCount > minCount) {
-      const newCount = currentCount - 1
-      setCount(newCount)
-      onChange(newCount)
+    if (count > minCount) {
+      setCount(count - 1);
     }
-  }
+  };
   
-  return { currentCount, increment, decrement }
+  return {
+    count,
+    increment,
+    decrement,
+  };
 }

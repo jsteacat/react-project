@@ -3,17 +3,17 @@ import { useReviewForm } from './useReviewForm.js'
 
 export const ReviewForm = () => {
   const {
+    name,
+    text,
+    rating,
     MAX_COUNT,
     MIN_COUNT,
-    SET_NAME_ACTION,
-    SET_TEXT_ACTION,
-    SET_RATING_ACTION,
-    CLEAR_ACTION,
-    form,
-    dispatch,
+    setNameAction,
+    setTextAction,
+    incrementRating,
+    decrementRating,
+    clearAction,
   } = useReviewForm()
-
-  const { name, text, rating } = form
 
   return (
     <div className="review-form">
@@ -22,15 +22,16 @@ export const ReviewForm = () => {
         <input
           type="text"
           value={name}
-          onChange={(e) => dispatch({ type: SET_NAME_ACTION, payload: { name: e.target.value } })}
+          onChange={(e) => setNameAction(e.target.value)}
         />
       </div>
       <br/>
       <div className="review-field" style={{display: 'flex', gap: '5px'}}>
         <label>Text:</label>
         <input
+          type="text"
           value={text}
-          onChange={(e) => dispatch({ type: SET_TEXT_ACTION, payload: { text: e.target.value } })}
+          onChange={(e) => setTextAction(e.target.value)}
         />
       </div>
       <br/>
@@ -40,11 +41,12 @@ export const ReviewForm = () => {
           count={rating}
           min={MIN_COUNT}
           max={MAX_COUNT}
-          onChange={(newRating) => dispatch({ type: SET_RATING_ACTION, payload: { rating: newRating } })}
+          increment={incrementRating}
+          decrement={decrementRating}
         />
       </div>
       <br/>
-      <button onClick={() => dispatch({ type: CLEAR_ACTION })}>Clear</button>
+      <button onClick={() => clearAction()}>Clear</button>
     </div>
   )
 }

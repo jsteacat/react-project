@@ -1,10 +1,11 @@
 import { Counter } from '../Counter/Counter.jsx'
+import { useCounter } from '../Counter/useCounter'
 
 const MAX_COUNT = 5
 const MIN_COUNT = 0
 
 export const Dish = ({ dish }) => {
-  let count = MIN_COUNT
+  const { count, increment, decrement } = useCounter(MIN_COUNT, MAX_COUNT)
 
   return (
     <>
@@ -13,7 +14,8 @@ export const Dish = ({ dish }) => {
         count={count}
         min={MIN_COUNT}
         max={MAX_COUNT}
-        onChange={(newCount) => count = newCount}
+        increment={increment}
+        decrement={decrement}
       />
     </>
   )
