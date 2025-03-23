@@ -5,5 +5,5 @@ export const Counter = ({ count, min, max, increment, decrement }) => {
       {count}
       <button disabled={count === max} onClick={increment} type="button">+</button>
     </div>
-  );
-};
+  )
+}
