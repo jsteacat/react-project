@@ -19,10 +19,21 @@ export const App = ({ title }) => {
   return (
     <Layout>
       <h1>{title}</h1>
+      <br />
       {restaurants.length > 0 ? (
         <div className="content">
           <Tabs tabs={tabs} onClick={selectRestaurantHandler} />
-          {Boolean(selectedRestaurant) && <Restaurant key={selectedRestaurantId} restaurant={selectedRestaurant} />}
+          <br />
+          {Boolean(selectedRestaurant) && (
+            <>
+              {Array.from({ length: 5 }, (_, index) => (
+                <div key={selectedRestaurant + index}>
+                  <Restaurant restaurant={selectedRestaurant} />
+                  <br />
+                </div>
+              ))}
+            </>
+          )}
         </div>
       ) : (
         <div className="empty-data">Данных нет</div>

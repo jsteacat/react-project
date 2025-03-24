@@ -7,8 +7,11 @@ export const Restaurant = ({ restaurant }) => {
   return (
     <div className="restaurant">
       <h2>{name}</h2>
+      <br/>
       {Boolean(menu.length) && <Menu menu={menu} />}
+      <br/>
       {Boolean(reviews.length) && <Reviews reviews={reviews} />}
+      <br/>
       <ReviewForm />
       <br/>
     </div>
