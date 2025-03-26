@@ -1,3 +1,7 @@
+.root {
+    padding-top: 10px;
+}
+
 .user-actions {
     display: flex;
     align-items: center;

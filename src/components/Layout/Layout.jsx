@@ -5,7 +5,7 @@ import styles from './Layout.module.css'
 
 export const Layout = ({ children }) => {
   return (
-    <div className="layout">
+    <div className={styles.root}>
       <ProgressBar />
       <header>Header</header>
       <div className={styles['user-actions']}>
