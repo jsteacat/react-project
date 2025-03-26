@@ -9,7 +9,7 @@ export const useCounter = (minCount, maxCount) => {
         return prevCount + 1
       }
       return prevCount
-    });
+    })
   }, [maxCount])
   
   const decrement = useCallback(() => {
@@ -18,7 +18,7 @@ export const useCounter = (minCount, maxCount) => {
         return prevCount - 1
       }
       return prevCount
-    });
+    })
   }, [minCount])
   
   return {

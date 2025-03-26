@@ -1,5 +1,7 @@
 import { Counter } from '../Counter/Counter.jsx'
+import { Button } from '../Button/Button.jsx'
 import { useReviewForm } from './useReviewForm.js'
+import styles from './ReviewForm.module.css'
 
 export const ReviewForm = () => {
   const {
@@ -17,7 +19,7 @@ export const ReviewForm = () => {
 
   return (
     <div className="review-form">
-      <div className="review-field" style={{display: 'flex', gap: '5px'}}>
+      <div className={styles.field}>
         <label>Name:</label>
         <input
           type="text"
@@ -26,7 +28,7 @@ export const ReviewForm = () => {
         />
       </div>
       <br/>
-      <div className="review-field" style={{display: 'flex', gap: '5px'}}>
+      <div className={styles.field}>
         <label>Text:</label>
         <input
           type="text"
@@ -35,7 +37,7 @@ export const ReviewForm = () => {
         />
       </div>
       <br/>
-      <div className="review-field" style={{display: 'flex', gap: '5px'}}>
+      <div className={styles.field}>
         <label>Rating:</label>
         <Counter
           count={rating}
@@ -46,7 +48,7 @@ export const ReviewForm = () => {
         />
       </div>
       <br/>
-      <button onClick={() => clearAction()}>Clear</button>
+      <Button onClick={() => clearAction()}>Clear</Button>
     </div>
   )
 }

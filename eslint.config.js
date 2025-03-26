@@ -2,7 +2,6 @@ import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import react from '@vitejs/plugin-react'
 
 export default [
   { ignores: ['dist'] },
@@ -18,11 +17,10 @@ export default [
       },
     },
     plugins: {
-      react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
-    settings: { react: { version: '19.0' } },
+    settings: { react: { version: 'detect' } },
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
@@ -31,7 +29,22 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
-      "react/prop-types": 0,
+      'react/prop-types': 'off',
+      'quotes': ['error', 'single'],
+      'semi': ['error', 'never'],
+      'indent': ['error', 2, {
+        'SwitchCase': 1,
+        'flatTernaryExpressions': true,
+        'offsetTernaryExpressions': true,
+        'ignoredNodes': ['TemplateLiteral *'],
+        'VariableDeclarator': 1,
+        'FunctionDeclaration': { 'parameters': 'first' },
+        'FunctionExpression': { 'parameters': 'first' },
+        'CallExpression': { 'arguments': 'first' },
+        'MemberExpression': 1,
+      }],
+      'object-curly-spacing': ['error', 'always'],
+      'comma-dangle': ['error', 'always-multiline'],
     },
   },
 ]

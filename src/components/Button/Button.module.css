@@ -1,0 +1,26 @@
+.root {
+    padding: 4px 8px;
+    border: none;
+}
+
+.root:disabled {
+    opacity: 0.6;
+}
+
+.primary {
+    border-radius: 4px;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+.dark {
+    background-color: blueviolet;
+    color: white;
+}
+
+.light {
+    background-color: aquamarine;
+    color: black;
+}

@@ -1,7 +1,12 @@
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
+import classNames from 'classnames'
+import { ThemeContext } from '../ThemeContext'
+import styles from './Progressbar.module.css'
 
 export const ProgressBar = () => {
   const [scrollProgress, setScrollProgress] = useState(0)
+  
+  const { theme } = use(ThemeContext)
   
   useEffect(() => {
     const updateScrollProgress = () => {
@@ -13,10 +18,15 @@ export const ProgressBar = () => {
     window.addEventListener('scroll', updateScrollProgress)
     return () => {
       window.removeEventListener('scroll', updateScrollProgress)
-    };
+    }
   }, [])
 
   return (
-    <div className="progress-bar" style={{width: `${scrollProgress}%`}}/>
+    <div
+      className={classNames(styles.root, {
+        [styles[theme]]: theme,
+      })}
+      style={{ width: `${scrollProgress}%` }}
+    />
   )
 }
