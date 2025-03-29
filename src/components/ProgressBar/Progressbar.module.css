@@ -1,0 +1,14 @@
+.root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 10px;
+}
+
+.dark {
+    background-color: blueviolet;
+}
+
+.light {
+    background-color: aquamarine;
+}

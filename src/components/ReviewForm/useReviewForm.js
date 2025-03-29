@@ -36,7 +36,7 @@ export const useReviewForm = () => {
   const [{ name, text, rating }, dispatch] = useReducer(
     reducer,
     DEFAULT_FORM_VALUE
-  );
+  )
   
   const setNameAction = (name) => {
     dispatch({ type: SET_NAME_ACTION, payload: name })
